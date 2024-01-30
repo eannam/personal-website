@@ -1,8 +1,9 @@
 import MagicCube from "@/components/magic-cube";
 import { autoRotateAtom, textAtom } from "@/utils/atoms";
-import { Billboard, OrbitControls, Text } from "@react-three/drei";
+import { Billboard, Loader, OrbitControls, Text } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useAtomValue } from "jotai";
+import { Suspense } from "react";
 
 export default function Home() {
   const text = useAtomValue(textAtom);
@@ -21,19 +22,21 @@ export default function Home() {
 
         <ambientLight intensity={0.5} />
 
-        <Billboard>
-          <Text
-            position={[0, 2.5, 0]}
-            fontSize={0.2}
-            font="/fonts/BerkeleyMono-Regular.ttf"
-          >
-            {text}
-            <meshBasicMaterial color="white" toneMapped={false} />
-          </Text>
-        </Billboard>
-
-        <MagicCube />
+        <Suspense>
+          <Billboard>
+            <Text
+              position={[0, 2.5, 0]}
+              fontSize={0.2}
+              font="/fonts/BerkeleyMono-Regular.ttf"
+            >
+              {text}
+              <meshBasicMaterial color="white" toneMapped={false} />
+            </Text>
+          </Billboard>
+          <MagicCube />
+        </Suspense>
       </Canvas>
+      <Loader />
     </main>
   );
 }

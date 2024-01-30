@@ -2,6 +2,7 @@ import { DEFAULT_MESSAGE, textAtom } from "@/utils/atoms";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useSetAtom } from "jotai";
+import { Suspense } from "react";
 
 export default function Earth() {
   const { scene } = useGLTF("/models/earth.glb");
@@ -15,7 +16,7 @@ export default function Earth() {
   });
 
   return (
-    <>
+    <Suspense>
       <mesh
         scale={[0.001, 0.001, 0.001]}
         position={[0, 0.5, 0]}
@@ -32,6 +33,6 @@ export default function Earth() {
       </mesh>
       <ambientLight intensity={1} />
       <pointLight position={[0.9, 0.7, 0]} intensity={5} />
-    </>
+    </Suspense>
   );
 }

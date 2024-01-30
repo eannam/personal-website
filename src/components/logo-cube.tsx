@@ -1,6 +1,8 @@
+import { autoRotateAtom } from "@/utils/atoms";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useAtomValue } from "jotai";
+import { Suspense, useRef } from "react";
 import * as THREE from "three";
 
 type Model =
@@ -25,12 +27,13 @@ export default function LogoCube({
   position?: [number, number, number];
   rotation?: [number, number, number];
 }) {
+  const rotate = useAtomValue(autoRotateAtom);
   const mesh = useRef<THREE.Mesh>(null);
 
   const { scene } = useGLTF(`/models/cubes/${model}`);
 
   useFrame((state, delta) => {
-    if (mesh.current) {
+    if (rotate && mesh.current) {
       mesh.current.rotation.y += delta;
     }
   });
@@ -47,16 +50,18 @@ export default function LogoCube({
   }
 
   return (
-    <mesh
-      ref={mesh}
-      castShadow
-      receiveShadow
-      scale={[scale, scale, scale]}
-      position={position}
-      rotation={rotation}
-    >
-      <primitive object={scene} />
-      <pointLight position={position} intensity={lightIntensity} castShadow />
-    </mesh>
+    <Suspense>
+      <mesh
+        ref={mesh}
+        castShadow
+        receiveShadow
+        scale={[scale, scale, scale]}
+        position={position}
+        rotation={rotation}
+      >
+        <primitive object={scene} />
+        <pointLight position={position} intensity={lightIntensity} castShadow />
+      </mesh>
+    </Suspense>
   );
 }
