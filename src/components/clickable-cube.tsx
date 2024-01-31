@@ -36,7 +36,7 @@ export default function ClickableCube({
       <ClickableFacade
         position={[0, -1.0001, 0]}
         rotation={[Math.PI / 2, 0, 0]}
-        url={null}
+        url={"https://eannamorley.com/about"}
         variant="info"
         cubeProps={cubeProps}
         setCubeProps={setCubeProps}
