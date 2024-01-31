@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import pic from "../../public/me.jpg";
 
 export default function About() {
   return (
@@ -8,7 +7,7 @@ export default function About() {
       <div className="h-full md:px-32 px-4 py-16 items-center border-x-2 border-blue-200 bg-blue-900">
         <div className="flex pb-4 justify-center ">
           <Image
-            src={pic.src}
+            src={"/me.jpg"}
             alt="Me on the top of Croagh Patrick, Westport, Ireland."
             width={150}
             height={150}
