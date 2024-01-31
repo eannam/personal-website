@@ -18,12 +18,10 @@ export default function Side({
 
   return (
     <MeshPortalMaterial attach={`material-${index}`}>
-      <ambientLight intensity={0.5} />
       <Environment preset="city" />
       {/* @ts-ignore */}
       <mesh rotation={rotation} geometry={child.geometry} receiveShadow>
-        <meshStandardMaterial color={bg} />
-        <ambientLight intensity={0.2} />
+        <meshStandardMaterial color={bg} metalness={0.9} roughness={0.6} />
       </mesh>
       {children}
     </MeshPortalMaterial>

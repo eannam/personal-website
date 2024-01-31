@@ -27,10 +27,10 @@ export default function LogoCube({
   position?: [number, number, number];
   rotation?: [number, number, number];
 }) {
-  const rotate = useAtomValue(autoRotateAtom);
-  const mesh = useRef<THREE.Mesh>(null);
-
   const { scene } = useGLTF(`/models/cubes/${model}`);
+
+  const mesh = useRef<THREE.Mesh>(null);
+  const rotate = useAtomValue(autoRotateAtom);
 
   useFrame((state, delta) => {
     if (rotate && mesh.current) {

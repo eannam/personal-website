@@ -1,21 +1,49 @@
-import ClickableFacade from "@/components/clickable-facade";
+import ClickableCube from "@/components/clickable-cube";
+import { CubeProps } from "@/components/clickable-facade";
 import Earth from "@/components/earth";
 import LogoCube from "@/components/logo-cube";
 import Side from "@/components/side";
-import { autoRotateAtom } from "@/utils/atoms";
 import { Edges } from "@react-three/drei";
-import { useSetAtom } from "jotai";
 import { useState } from "react";
 
 export default function MagicCube() {
-  const setRotation = useSetAtom(autoRotateAtom);
-
-  const [cubeProps, setCubeProps] = useState({
-    x: { scale: 0.02, lightIntensity: 20, color: "#36454f" },
-    github: { scale: 0.02, lightIntensity: 20, color: "#6cc644" },
-    audyo: { scale: 0.02, lightIntensity: 20, color: "#ec4f27" },
-    linkedin: { scale: 0.02, lightIntensity: 20, color: "#0077b5" },
-    info: { scale: 0.02, lightIntensity: 20, color: "#ffd700" },
+  const [cubeProps, setCubeProps] = useState<CubeProps>({
+    x: {
+      scale: 0.02,
+      lightIntensity: 20,
+      color: "#36454f",
+      message: "I'm on X",
+    },
+    github: {
+      scale: 0.02,
+      lightIntensity: 20,
+      color: "#6cc644",
+      message: "Check out my GitHub",
+    },
+    audyo: {
+      scale: 0.02,
+      lightIntensity: 20,
+      color: "#ec4f27",
+      message: "I'm cofounder & CTO at Audyo",
+    },
+    linkedin: {
+      scale: 0.02,
+      lightIntensity: 20,
+      color: "#0077b5",
+      message: "I'm on LinkedIn",
+    },
+    info: {
+      scale: 0.02,
+      lightIntensity: 20,
+      color: "#ffd700",
+      message: "More about me",
+    },
+    earth: {
+      scale: 0.001,
+      lightIntensity: 5,
+      message: "I'm from Dublin, Ireland,\nliving in London.",
+      color: "",
+    },
   });
 
   return (
@@ -33,7 +61,7 @@ export default function MagicCube() {
         />
       </Side>
       <Side rotation={[0, Math.PI / 2, Math.PI / 2]} bg="black" index={2}>
-        <Earth />
+        <Earth {...cubeProps.earth} />
       </Side>
       <Side rotation={[0, Math.PI / 2, -Math.PI / 2]} bg="#ffd700" index={3}>
         <LogoCube
@@ -57,50 +85,7 @@ export default function MagicCube() {
           {...cubeProps.linkedin}
         />
       </Side>
-      <ClickableFacade
-        position={[0, 0, 1.0001]}
-        rotation={[0, 0, 0]}
-        url="https://audyo.ai"
-        stateKey="audyo"
-        cubeProps={cubeProps}
-        setCubeProps={setCubeProps}
-      />
-      <mesh receiveShadow>
-        <boxGeometry args={[0, 0, 4]} />
-        <meshStandardMaterial color="black" metalness={0.2} roughness={0.7} />
-      </mesh>
-      <ClickableFacade
-        position={[0, 0, -1.0001]}
-        rotation={[0, Math.PI, 0]}
-        url="https://linkedin.com/in/eannamorley"
-        stateKey="linkedin"
-        cubeProps={cubeProps}
-        setCubeProps={setCubeProps}
-      />
-      <ClickableFacade
-        position={[1.0001, 0, 0]}
-        rotation={[0, Math.PI / 2, 0]}
-        url="https://x.com/_eannamorley"
-        stateKey="x"
-        cubeProps={cubeProps}
-        setCubeProps={setCubeProps}
-      />
-      <ClickableFacade
-        position={[-1.0001, 0, 0]}
-        rotation={[0, -Math.PI / 2, 0]}
-        url="https://github.com/eannam"
-        stateKey="github"
-        cubeProps={cubeProps}
-        setCubeProps={setCubeProps}
-      />
-      <ClickableFacade
-        position={[0, -1.0001, 0]}
-        rotation={[Math.PI / 2, 0, 0]}
-        url={null}
-        stateKey="info"
-        cubeProps={cubeProps}
-        setCubeProps={setCubeProps}
-      />
+      <ClickableCube cubeProps={cubeProps} setCubeProps={setCubeProps} />
     </mesh>
   );
 }

@@ -1,38 +1,40 @@
-import { DEFAULT_MESSAGE, textAtom } from "@/utils/atoms";
-import { useGLTF } from "@react-three/drei";
+import { autoRotateAtom } from "@/utils/atoms";
+import { Sparkles, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useSetAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { Suspense } from "react";
 
-export default function Earth() {
+export default function Earth({
+  scale,
+  lightIntensity,
+}: {
+  scale: number;
+  lightIntensity: number;
+}) {
   const { scene } = useGLTF("/models/earth.glb");
 
-  const setText = useSetAtom(textAtom);
+  const rotate = useAtomValue(autoRotateAtom);
 
   useFrame((state, delta) => {
-    if (scene) {
+    if (rotate && scene) {
       scene.rotation.y += delta;
     }
   });
 
   return (
     <Suspense>
-      <mesh
-        scale={[0.001, 0.001, 0.001]}
-        position={[0, 0.5, 0]}
-        onPointerOver={(e) => {
-          e.stopPropagation();
-          setText("I'm from Ireland\nbut I live in London.");
-        }}
-        onPointerOut={(e) => {
-          e.stopPropagation();
-          setText(DEFAULT_MESSAGE);
-        }}
-      >
+      <mesh scale={[scale, scale, scale]} position={[0, 0.5, 0]}>
         <primitive object={scene} />
       </mesh>
       <ambientLight intensity={1} />
-      <pointLight position={[0.9, 0.7, 0]} intensity={5} />
+      <pointLight position={[0, 1.5, 0]} intensity={lightIntensity} />
+      <Sparkles
+        count={50}
+        scale={2}
+        size={0.5}
+        speed={0.1}
+        position={[0, 0, 0]}
+      />
     </Suspense>
   );
 }
