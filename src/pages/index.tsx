@@ -1,13 +1,12 @@
 import MagicCube from "@/components/magic-cube";
 import Message from "@/components/message";
-import { autoRotateAtom, messageAtom } from "@/utils/atoms";
+import { autoRotateAtom } from "@/utils/atoms";
 import { Loader, OrbitControls, PerformanceMonitor } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useAtomValue } from "jotai";
 import { Suspense } from "react";
 
 export default function Home() {
-  const message = useAtomValue(messageAtom);
   const autoRotate = useAtomValue(autoRotateAtom);
 
   return (

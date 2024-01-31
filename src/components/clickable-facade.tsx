@@ -76,9 +76,7 @@ export default function ClickableFacade({
       setRotate(true);
     }
 
-    setTimeout(() => {
-      setMessage(DEFAULT_MESSAGE);
-    }, 500);
+    setMessage(DEFAULT_MESSAGE);
   };
 
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
@@ -88,9 +86,6 @@ export default function ClickableFacade({
       window.open(url, "_blank");
     } else {
       setMessage(cubeProps[variant].message);
-      setTimeout(() => {
-        setMessage(DEFAULT_MESSAGE);
-      }, 2_000);
     }
   };
 
