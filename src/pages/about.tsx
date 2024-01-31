@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function About() {
   return (
     <main className="flex h-auto items-center justify-center bg-blue-950 text-blue-100">
-      <div className="h-full md:px-32 px-4 py-16 items-center border-x-2 border-blue-200 bg-blue-900">
+      <div className="h-full md:px-32 px-4 py-16 items-center md:border-x-2 border-blue-200 bg-blue-900">
         <div className="flex pb-4 justify-center ">
           <Image
             src={"/me.JPG"}
@@ -24,9 +24,7 @@ export default function About() {
             <li>Living in London</li>
             <li>
               Enquiries:{" "}
-              <span className="underline underline-offset-2 text-blue-200">
-                eannamorley@gmail.com
-              </span>
+              <span className="text-blue-200">eannamorley@gmail.com</span>
             </li>
           </ul>
           <h2 className="text-2xl py-4 px-2 underline underline-offset-8">
