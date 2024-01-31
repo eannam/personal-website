@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function About() {
@@ -5,7 +6,7 @@ export default function About() {
     <main className="flex h-auto items-center justify-center bg-blue-950 text-blue-100">
       <div className="h-full md:px-32 px-4 py-16 items-center border-x-2 border-blue-200 bg-blue-900">
         <div className="flex pb-4 justify-center ">
-          <img
+          <Image
             src={"/me.jpg"}
             alt="Me on the top of Croagh Patrick, Westport, Ireland."
             width={150}
