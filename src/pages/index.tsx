@@ -1,7 +1,8 @@
+import CameraRaycaster from "@/components/camera-raycaster";
 import MagicCube from "@/components/magic-cube";
 import Message from "@/components/message";
 import { autoRotateAtom } from "@/utils/atoms";
-import { Loader, OrbitControls, PerformanceMonitor } from "@react-three/drei";
+import { Loader, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useAtomValue } from "jotai";
 import { Suspense } from "react";
@@ -12,18 +13,18 @@ export default function Home() {
   return (
     <main className="h-screen to-black from-slate-800 bg-gradient-radial ">
       <Canvas camera={{ position: [-3, 0.5, 3], fov: 80 }}>
-        <PerformanceMonitor>
-          <Suspense>
-            <OrbitControls
-              enablePan={false}
-              enableRotate
-              autoRotate={autoRotate}
-              autoRotateSpeed={1}
-            />
-            <Message />
-            <MagicCube />
-          </Suspense>
-        </PerformanceMonitor>
+        {/* <StatsGl /> */}
+        <Suspense>
+          <OrbitControls
+            enablePan={false}
+            enableRotate
+            autoRotate={autoRotate}
+            autoRotateSpeed={1.5}
+          />
+          <CameraRaycaster />
+          <Message />
+          <MagicCube />
+        </Suspense>
       </Canvas>
       <Loader />
     </main>

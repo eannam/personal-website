@@ -1,7 +1,10 @@
-import { DEFAULT_MESSAGE, autoRotateAtom, messageAtom } from "@/utils/atoms";
+import { autoRotateAtom } from "@/utils/atoms";
+import { useCursor } from "@react-three/drei";
 import { ThreeEvent } from "@react-three/fiber";
 import { useSetAtom } from "jotai";
+import { useState } from "react";
 
+// Yes, the Earth is a cube, deal with it.
 type CubeVariant = "x" | "github" | "audyo" | "linkedin" | "info" | "earth";
 
 type Cube = {
@@ -28,16 +31,19 @@ export default function ClickableFacade({
   cubeProps: CubeProps;
   setCubeProps: any;
 }) {
-  const setMessage = useSetAtom(messageAtom);
+  const [hovered, setHovered] = useState(false);
+
   const setRotate = useSetAtom(autoRotateAtom);
+
+  useCursor(hovered, "pointer", "auto");
 
   const handlePointerOver = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
 
+    setHovered(true);
+
     const newScale = variant === "earth" ? 0.0011 : 0.021;
     const newLightIntensity = variant === "earth" ? 10 : 30;
-
-    document.body.style.cursor = "pointer";
 
     setCubeProps({
       ...cubeProps,
@@ -51,14 +57,12 @@ export default function ClickableFacade({
     if (setRotate) {
       setRotate(false);
     }
-
-    setMessage(cubeProps[variant].message);
   };
 
   const handlePointerOut = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
 
-    document.body.style.cursor = "auto";
+    setHovered(false);
 
     const newScale = variant === "earth" ? 0.001 : 0.02;
     const newLightIntensity = variant === "earth" ? 5 : 20;
@@ -75,8 +79,6 @@ export default function ClickableFacade({
     if (setRotate) {
       setRotate(true);
     }
-
-    setMessage(DEFAULT_MESSAGE);
   };
 
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
@@ -84,13 +86,12 @@ export default function ClickableFacade({
 
     if (url) {
       window.open(url, "_blank");
-    } else {
-      setMessage(cubeProps[variant].message);
     }
   };
 
   return (
     <mesh
+      name={variant}
       position={position}
       rotation={rotation}
       onPointerOver={handlePointerOver}
