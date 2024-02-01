@@ -20,7 +20,7 @@ export const cubePropsAtom = atom<CubeProps>({
     scale: 0.02,
     lightIntensity: 20,
     color: "#ec4f27",
-    message: "I'm cofounder & CTO at Audyo",
+    message: "I'm co-founder & CTO at Audyo",
   },
   linkedin: {
     scale: 0.02,
@@ -37,7 +37,7 @@ export const cubePropsAtom = atom<CubeProps>({
   earth: {
     scale: 0.001,
     lightIntensity: 5,
-    message: "I'm from Dublin, Ireland,\nliving in London.",
+    message: "I'm from Dublin, Ireland\nI live in London",
     color: "",
   },
 });
