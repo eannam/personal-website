@@ -48,7 +48,7 @@ export default function About() {
               <p className="text-xs text-blue-300">{"2019 -> 2020"}</p>
             </li>
             <li>
-              <h3 className="text-lg">{"Analytics Analyst"}</h3>
+              <h3 className="text-lg">{"Data Scientist"}</h3>
               <p className="text-md">{"Accenture"}</p>
               <p className="text-xs text-blue-300">{"2016 -> 2018"}</p>
             </li>
