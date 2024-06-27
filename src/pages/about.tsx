@@ -19,12 +19,16 @@ export default function About() {
             About Me
           </h2>
           <ul className="flex flex-col space-y-2 px-8 list-disc">
-            <li>Fullstack developer & machine learning engineer</li>
+            <li>Full stack developer & machine learning engineer</li>
             <li>Born in Dublin, Ireland 🇮🇪</li>
             <li>Living in London</li>
             <li>
-              Enquiries:{" "}
-              <span className="text-blue-200">eannamorley@gmail.com</span>
+              For contract work or general enquiries:{" "}
+              <span className="text-blue-200">
+                <a href="mailto:eannamorley@gmail.com" target="_blank">
+                  eannamorley@gmail.com
+                </a>
+              </span>
             </li>
           </ul>
           <h2 className="text-2xl py-4 px-2 underline underline-offset-8">
