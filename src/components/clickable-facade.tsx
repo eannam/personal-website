@@ -5,7 +5,7 @@ import { useSetAtom } from "jotai";
 import { useState } from "react";
 
 // Yes, the Earth is a cube, deal with it.
-type CubeVariant = "x" | "github" | "audyo" | "linkedin" | "info" | "earth";
+type CubeVariant = "x" | "github" | "audyo" | "linkedin" | "info" | "substack";
 
 type Cube = {
   color: string;
@@ -42,8 +42,11 @@ export default function ClickableFacade({
 
     setHovered(true);
 
-    const newScale = variant === "earth" ? 0.0011 : 0.021;
-    const newLightIntensity = variant === "earth" ? 10 : 30;
+    // const newScale = variant === "earth" ? 0.0011 : 0.021;
+    // const newLightIntensity = variant === "earth" ? 10 : 30;
+
+    const newScale = 0.021;
+    const newLightIntensity = 30;
 
     setCubeProps({
       ...cubeProps,
@@ -64,8 +67,11 @@ export default function ClickableFacade({
 
     setHovered(false);
 
-    const newScale = variant === "earth" ? 0.001 : 0.02;
-    const newLightIntensity = variant === "earth" ? 5 : 20;
+    // const newScale = variant === "earth" ? 0.001 : 0.02;
+    // const newLightIntensity = variant === "earth" ? 5 : 20;
+
+    const newScale = 0.02;
+    const newLightIntensity = 20;
 
     setCubeProps({
       ...cubeProps,

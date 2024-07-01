@@ -34,10 +34,10 @@ export const cubePropsAtom = atom<CubeProps>({
     color: "#ffd700",
     message: "More about me",
   },
-  earth: {
-    scale: 0.001,
-    lightIntensity: 5,
-    message: "I'm from Dublin, Ireland\nI live in London",
-    color: "",
+  substack: {
+    scale: 0.02,
+    lightIntensity: 20,
+    color: "#ffA500",
+    message: "I write on Substack",
   },
 });

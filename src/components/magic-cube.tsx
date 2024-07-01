@@ -1,5 +1,4 @@
 import ClickableCube from "@/components/clickable-cube";
-import Earth from "@/components/earth";
 import LogoCube from "@/components/logo-cube";
 import Side from "@/components/side";
 import { cubePropsAtom } from "@/utils/atoms";
@@ -24,8 +23,14 @@ export default function MagicCube() {
           {...cubeProps.github}
         />
       </Side>
-      <Side rotation={[0, Math.PI / 2, Math.PI / 2]} bg="black" index={2}>
-        <Earth {...cubeProps.earth} />
+      <Side rotation={[0, Math.PI / 2, Math.PI / 2]} bg="#ffA500" index={2}>
+        {/* <Earth {...cubeProps.earth} /> */}
+        <LogoCube
+          model="substack-cube.glb"
+          position={[0, 0, 0]}
+          rotation={[0, 0, Math.PI / 2]}
+          {...cubeProps.substack}
+        />
       </Side>
       <Side rotation={[0, Math.PI / 2, -Math.PI / 2]} bg="#ffd700" index={3}>
         <LogoCube

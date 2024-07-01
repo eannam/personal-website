@@ -10,7 +10,8 @@ type Model =
   | "x-cube.glb"
   | "linkedin-cube.glb"
   | "github-cube.glb"
-  | "info-cube.glb";
+  | "info-cube.glb"
+  | "substack-cube.glb";
 
 export default function LogoCube({
   model,

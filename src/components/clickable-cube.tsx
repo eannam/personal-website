@@ -52,8 +52,8 @@ export default function ClickableCube({
       <ClickableFacade
         position={[0, 1.0001, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        url={null}
-        variant="earth"
+        url={"https://eannam.substack.com"}
+        variant="substack"
         cubeProps={cubeProps}
         setCubeProps={setCubeProps}
       />
