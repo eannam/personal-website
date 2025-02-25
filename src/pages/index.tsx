@@ -11,7 +11,7 @@ export default function Home() {
   const autoRotate = useAtomValue(autoRotateAtom);
 
   return (
-    <main className="h-screen to-black from-slate-800 bg-gradient-radial ">
+    <main className="h-screen bg-black ">
       <Canvas camera={{ position: [-3, 0.5, 3], fov: 80 }}>
         {/* <StatsGl /> */}
         <Suspense>

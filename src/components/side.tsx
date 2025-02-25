@@ -1,4 +1,9 @@
-import { Environment, MeshPortalMaterial, useGLTF } from "@react-three/drei";
+import {
+  Edges,
+  Environment,
+  MeshPortalMaterial,
+  useGLTF,
+} from "@react-three/drei";
 import { useMemo } from "react";
 
 export default function Side({
@@ -20,8 +25,14 @@ export default function Side({
     <MeshPortalMaterial attach={`material-${index}`}>
       <Environment preset="city" />
       {/* @ts-ignore */}
-      <mesh rotation={rotation} geometry={child.geometry} receiveShadow>
-        <meshStandardMaterial color={bg} metalness={0.9} roughness={0.6} />
+      <mesh rotation={rotation} geometry={child.geometry}>
+        <Edges
+          color="#ffffff"
+          threshold={15} // Adjust angle threshold as needed
+          scale={0.999}
+          renderOrder={1} // Ensure edges render on top
+        />
+        <meshBasicMaterial color={bg} />
       </mesh>
       {children}
     </MeshPortalMaterial>

@@ -54,14 +54,12 @@ export default function LogoCube({
     <Suspense>
       <mesh
         ref={mesh}
-        castShadow
-        receiveShadow
         scale={[scale, scale, scale]}
         position={position}
         rotation={rotation}
       >
         <primitive object={scene} />
-        <pointLight position={position} intensity={lightIntensity} castShadow />
+        <pointLight position={position} intensity={lightIntensity} />
       </mesh>
     </Suspense>
   );
